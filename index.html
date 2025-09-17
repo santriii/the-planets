@@ -27,20 +27,30 @@
       letter-spacing: 2px;
     }
     .container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      padding: 60px;
-      gap: 40px;
-    }
-    .left h1 {
-      font-size: 72px;
-      margin: 0;
-    }
-    .left p {
-      font-size: 18px;
-      line-height: 1.5;
-      margin: 20px 0;
+  position: relative; /* supaya video bisa absolute di dalamnya */
+  display: flex;
+  align-items: center;
+  padding: 60px;
+  gap: 40px;
+}
+
+.left {
+  position: relative;
+  z-index: 2; /* teks di atas video */
+  color: white;
+}
+
+.video-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;   /* bisa disesuaikan */
+  height: 600px;  /* portrait */
+  object-fit: cover;
+  z-index: 1;     /* di belakang teks */
+  opacity: 0.5;   /* supaya teks mudah dibaca */
+  border-radius: 20px; /* opsional */
     }
     .btn {
       display: inline-block;
@@ -73,19 +83,41 @@
     </nav>
   </header>
 
-  <div class="container">
-    <div class="left">
-      <h4>A traveler's guide to the planet</h4>
-      <h1>Earth</h1>
-      <p>Earth is the third planet from the Sun and the only astronomical object known to harbor life. 
-      According to radiometric dating and other sources of evidence, Earth formed over 4.5 billion years ago.</p>
-      <a href="#" class="btn">More details</a>
-      <div class="right">
-  <video autoplay loop muted playsinline width="400">
+ <div class="container">
+  <div class="left">
+    <h4>A traveler's guide to the planet</h4>
+    <h1>Earth</h1>
+    <p>Earth is the third planet from the Sun and the only astronomical object known to harbor life. 
+    According to radiometric dating and other sources of evidence, Earth formed over 4.5 billion years ago.</p>
+    <a href="#" class="btn">More details</a>
+
+    <div class="facts">
+      <div>
+        <b>365.26 days</b><br>
+        Orbit around Sun
+      </div>
+      <div>
+        <b>71%</b><br>
+        Covered with water
+      </div>
+      <div>
+        <b>4.1 billion years</b><br>
+        Life may have arisen
+      </div>
+      <div>
+        <b>7.6 billion</b><br>
+        Population
+      </div>
+    </div>
+  </div>
+
+  <!-- Video di belakang teks -->
+  <video autoplay loop muted playsinline class="video-bg">
     <source src="galaksi.mp4" type="video/mp4">
     Browser kamu tidak mendukung video.
   </video>
 </div>
+
 
 
       <div class="facts">
